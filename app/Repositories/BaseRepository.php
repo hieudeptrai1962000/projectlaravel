@@ -2,9 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Repositories\RepositoryInterface;
 
-abstract class BaseRepository implements RepositoryInterface
+abstract class BaseRepository
 {
     //model muốn tương tác
     protected $model;
