@@ -54,11 +54,8 @@
     {{Form::submit('Submit', array('class' => 'btn btn-success mt-2'))}}
 
     {!! Form::close()  !!}
-
+    <a href="{{route('faculty.index')}}" class="btn btn-success btn-add">Back</a>
 </div>
-<script>
-    document.getElementById("current_date").innerHTML = Date();
-</script>
 </body>
 
 </html>
