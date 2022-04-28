@@ -40,14 +40,6 @@
                 {!! Form::text('name', $value = null, ['class' => 'form-control', 'placeholder' => 'Khoa']) !!}
             </div>
         </div>
-        <div class="form-group">
-            {!! Form::label('create_at', 'Ngay Tao:', ['class' => 'col-lg-2 control-label']) !!}
-            <div class="col-lg-10">
-                {!! Form::date('create_at', $value = null, ['class' => 'form-control2']) !!}
-            </div>
-        </div>
-
-
         <!-- Text Area -->
 
     </fieldset>

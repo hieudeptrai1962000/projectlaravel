@@ -37,7 +37,7 @@
         <div class="form-group">
             {!! Form::label('name', 'Khoa:', ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
-                {!! Form::text('name', $value = null, ['class' => 'form-control', 'placeholder' => 'Khoa']) !!}
+                {!! Form::text('name', $facuedit->name, ['class' => 'form-control', 'placeholder' => 'Khoa']) !!}
             </div>
         </div>
 
