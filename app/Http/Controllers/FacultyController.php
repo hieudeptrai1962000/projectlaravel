@@ -44,7 +44,7 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
-       $validator = $this->validate($request, [
+       $this->validate($request, [
             'id' =>[
                 'required',
                 'unique:faculties,id'
