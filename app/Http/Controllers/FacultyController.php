@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faculty;
 use Illuminate\Http\Request;
-
-
 use App\Repositories\Faculty\FacultyRepository;
 
 class FacultyController extends Controller
@@ -25,10 +22,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-//        $facu = \App\Models\FacultyController::all();
-//        return view('faculty.main',compact('facu'));
-        $facu = $this->facultyRepo->getFaculty();
-        return view('faculty.main',compact('facu'));
+        $faculty = $this->facultyRepo->getFaculty();
+        return view('faculty.main',compact('faculty'));
     }
 
     /**
@@ -49,8 +44,19 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $faculty = $this->facultyRepo->create($data);
+       $validator = $this->validate($request, [
+            'id' =>[
+                'required',
+                'unique:faculties,id'
+            ],
+            'name' =>[
+                'required',
+                'unique:faculties,name'
+            ],
+        ]);
+
+
+        $this->facultyRepo->create($request->all());
         return redirect()->route('faculty.index')->with('success','Successfully!');
     }
 
@@ -73,8 +79,8 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        $facuedit = $this->facultyRepo->find($id);
-        return view('faculty.edit', compact('facuedit'));
+        $faculty = $this->facultyRepo->find($id);
+        return view('faculty.edit', compact('faculty'));
     }
 
     /**
@@ -86,6 +92,12 @@ class FacultyController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' =>[
+                'required',
+                'unique:faculties,name'
+            ],
+        ]);
         $faculty =$this->facultyRepo->find($id);
         $faculty->update($request->all());
 
@@ -100,8 +112,8 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        $facudel = $this->facultyRepo->find($id);
-        $facudel->delete();
+        $faculty = $this->facultyRepo->find($id);
+        $faculty->delete();
         return redirect()->route('faculty.index')->with('success','Successfully!');
     }
 }

@@ -1,16 +1,5 @@
-<!doctype html>
-<html>
+@extends('layouts/master')
 
-<head>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <meta charset="utf-8">
-    <title>Laravel</title>
-</head>
-
-<body>
 <div class="container">
     <div class="row">
         <div class="col-lg-8"> @yield('content') </div>
@@ -26,10 +15,20 @@
 
         <legend>CREATE</legend>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="form-group">
-            {!! Form::label('id', 'ID:', ['class' => 'col-lg-2 control-label']) !!}
+            {!! Form::label('id', 'Mã Môn Học:', ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
-                {!! Form::text('id', $value = null, ['class' => 'form-control', 'placeholder' => 'ID']) !!}
+                {!! Form::text('id', $value = null, ['class' => 'form-control', 'placeholder' => '196']) !!}
             </div>
         </div>
         <div class="form-group">

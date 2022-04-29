@@ -15,6 +15,6 @@ class FacultyRepository extends BaseRepository
 
     public function getFaculty()
     {
-        return Faculty::paginate(1);
+        return Faculty::paginate(5);
     }
 }

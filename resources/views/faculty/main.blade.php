@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Laravel</title>
-    <!-- Latest compiled and minified CSS & JS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
-
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-</head>
-<body>
+@extends('layouts/layout')
 <div class="container">
     <a href="{{route('faculty.create')}}" class="btn btn-success btn-add" id="addst" data-target="#modal-add"
        data-toggle="modal">Add</a>
@@ -18,21 +6,18 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>Mã Môn Học</th>
                 <th>Tên Khoa</th>
             </tr>
             </thead>
             <tbody>
-            <div id="app">
                 @include('layouts.flash_message')
-            </div>
-            <div>@foreach ($facu as $faculty)
+            <div>@foreach ($faculty as $f)
                     <tr>
-                        <td>{{$faculty->id}}</td>
-                        <td>{{$faculty->name}}</td>
-                        <td>
+                        <td>{{$f->id}}</td>
+                        <td>{{$f->name}}</td>
                         <td class="center">
-                            <form method="GET" action="{{route('faculty.edit',$faculty->id)}}">
+                            <form method="GET" action="{{route('faculty.edit',$f->id)}}">
                                 <form>
                                                                 {{ csrf_field() }}
                                                                 {{ method_field('GET') }}
@@ -40,7 +25,7 @@
                                         <input type="submit" class="btn btn-primary" value="Edit">
                                     </div>
                                 </form>
-                                <form method="POST" onclick="return confirm('Are you sure?')" action="{{route('faculty.destroy',$faculty->id)}}">
+                                <form method="POST" onclick="return confirm('Are you sure?')" action="{{route('faculty.destroy',$f->id)}}">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <div class="form-group">
@@ -61,7 +46,5 @@
 
 </div>
 <div style="margin-left: auto;margin-right: auto;width: 10%;">
-    {{$facu->links("pagination::bootstrap-4")}}
+    {{$faculty->links("pagination::bootstrap-4")}}
 </div>
-</body>
-</html>

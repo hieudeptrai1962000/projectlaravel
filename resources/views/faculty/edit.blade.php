@@ -1,16 +1,4 @@
-<!doctype html>
-<html>
-
-<head>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <meta charset="utf-8">
-    <title>Laravel</title>
-</head>
-
-<body>
+@extends('layouts/master')
 <div class="container">
     <div class="row">
         <div class="col-lg-8"> @yield('content') </div>
@@ -20,23 +8,32 @@
 
 <div class="well">
 
-    {{  Form::open(array('route' => array('faculty.update', $facuedit->id), 'method'=>'put')) }}
+    {{  Form::open(array('route' => array('faculty.update', $faculty->id), 'method'=>'put')) }}
 
     <fieldset>
 
         <legend>UPDATE</legend>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <div class="form-group" style="display: none">
             {!! Form::label('id', 'ID:', ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
-                {!! Form::text('id', $facuedit->id, ['class' => 'form-control', 'placeholder' => 'ID']) !!}
+                {!! Form::text('id', $faculty->id, ['class' => 'form-control',]) !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('name', 'Khoa:', ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
-                {!! Form::text('name', $facuedit->name, ['class' => 'form-control']) !!}
+                {!! Form::text('name', $faculty->name, ['class' => 'form-control']) !!}
             </div>
         </div>
 
@@ -48,12 +45,4 @@
     {!! Form::close()  !!}
     <a href="{{route('faculty.index')}}" class="btn btn-success btn-add">Back</a>
 </div>
-<?php
-//foreach ($facuedit as $edit)
-//    {
-//        echo $edit;
-//    }
-//?>
-</body>
 
-</html>
