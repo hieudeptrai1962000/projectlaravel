@@ -23,6 +23,9 @@
             </tr>
             </thead>
             <tbody>
+            <div id="app">
+                @include('layouts.flash_message')
+            </div>
             <div>@foreach ($facu as $faculty)
                     <tr>
                         <td>{{$faculty->id}}</td>
@@ -31,13 +34,13 @@
                         <td class="center">
                             <form method="GET" action="{{route('faculty.edit',$faculty->id)}}">
                                 <form>
-                                    {{--                            {{ csrf_field() }}--}}
-                                    {{--                            {{ method_field('GET') }}--}}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('GET') }}
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-primary" value="Edit">
                                     </div>
                                 </form>
-                                <form method="POST" action="{{route('faculty.destroy',$faculty->id)}}">
+                                <form method="POST" onclick="return confirm('Are you sure?')" action="{{route('faculty.destroy',$faculty->id)}}">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <div class="form-group">

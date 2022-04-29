@@ -51,7 +51,7 @@ class FacultyController extends Controller
     {
         $data = $request->all();
         $faculty = $this->facultyRepo->create($data);
-        return redirect()->route('faculty.index');
+        return redirect()->route('faculty.index')->with('success','Successfully!');
     }
 
     /**
@@ -89,7 +89,7 @@ class FacultyController extends Controller
         $faculty =$this->facultyRepo->find($id);
         $faculty->update($request->all());
 
-        return redirect()->route('faculty.index', compact('faculty'));
+        return redirect()->route('faculty.index', compact('faculty'))->with('success','Successfully!');
     }
 
     /**
@@ -102,6 +102,6 @@ class FacultyController extends Controller
     {
         $facudel = $this->facultyRepo->find($id);
         $facudel->delete();
-        return redirect()->route('faculty.index');
+        return redirect()->route('faculty.index')->with('success','Successfully!');
     }
 }

@@ -26,8 +26,6 @@
 
         <legend>CREATE</legend>
 
-        <!-- Email -->
-
         <div class="form-group">
             {!! Form::label('id', 'ID:', ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
