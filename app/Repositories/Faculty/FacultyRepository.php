@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories\Faculty;
 
 use App\Models\Faculty;
@@ -10,7 +11,7 @@ class FacultyRepository extends BaseRepository
 
     public function getModel()
     {
-        return \App\Models\Faculty::class;
+        return Faculty::class;
     }
 
     public function getFaculty()

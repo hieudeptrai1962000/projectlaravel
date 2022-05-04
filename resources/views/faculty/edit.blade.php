@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('name', 'Khoa:', ['class' => 'col-lg-2 control-label']) !!}
+            {!! Form::label('name', 'Faculty:', ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
                 {!! Form::text('name', $faculty->name, ['class' => 'form-control']) !!}
             </div>

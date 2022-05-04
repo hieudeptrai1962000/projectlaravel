@@ -25,14 +25,9 @@
             </div>
         @endif
 
+
         <div class="form-group">
-            {!! Form::label('id', 'Mã Môn Học:', ['class' => 'col-lg-2 control-label']) !!}
-            <div class="col-lg-10">
-                {!! Form::text('id', $value = null, ['class' => 'form-control', 'placeholder' => '196']) !!}
-            </div>
-        </div>
-        <div class="form-group">
-            {!! Form::label('name', 'Khoa:', ['class' => 'col-lg-2 control-label']) !!}
+            {!! Form::label('name', 'Faculty:', ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
                 {!! Form::text('name', $value = null, ['class' => 'form-control', 'placeholder' => 'Khoa']) !!}
             </div>

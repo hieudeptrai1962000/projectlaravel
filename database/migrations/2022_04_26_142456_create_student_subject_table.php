@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('student_subject', function (Blueprint $table) {
+            $table->integer('id')->unsigned()->primary()->autoIncrement();
             $table->integer('student_id')->unsigned();
             $table->integer('subject_id')->unsigned();
             $table->float('mark');

@@ -29,13 +29,6 @@ abstract class BaseRepository
         return $this->model->all();
     }
 
-    public function find($id)
-    {
-        $result = $this->model->find($id);
-
-        return $result;
-    }
-
     public function create($attributes = [])
     {
         return $this->model->create($attributes);
@@ -50,6 +43,13 @@ abstract class BaseRepository
         }
 
         return false;
+    }
+
+    public function find($id)
+    {
+        $result = $this->model->find($id);
+
+        return $result;
     }
 
     public function delete($id)

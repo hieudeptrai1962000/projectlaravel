@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Student_subject;
+use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\SubjectsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +21,6 @@ Route::get('/', function () {
 });
 
 Route::resource('faculty', \App\Http\Controllers\FacultyController::class);
+Route::resource('subject', SubjectsController::class);
+Route::resource('student', StudentsController::class);
+Route::resource('result', Student_subject::class);

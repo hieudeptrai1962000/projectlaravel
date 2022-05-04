@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Repositories\Faculty\FacultyRepository;
+use Illuminate\Http\Request;
 
 class FacultyController extends Controller
 {
@@ -44,20 +44,18 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request, [
-            'id' =>[
-                'required',
-                'unique:faculties,id'
-            ],
-            'name' =>[
-                'required',
-                'unique:faculties,name'
-            ],
-        ]);
+        $this->validate($request, [
+            'name' => 'required|unique:faculties,name',
+        ],
+            [
+                'name.required' => 'Tên không được để trống',
+                'name.unique' => 'Tên không được trùng',
+            ]
+        );
 
 
         $this->facultyRepo->create($request->all());
-        return redirect()->route('faculty.index')->with('success','Successfully!');
+        return redirect()->route('faculty.index')->with('success', 'Successfully!');
     }
 
     /**
@@ -93,15 +91,17 @@ class FacultyController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' =>[
-                'required',
-                'unique:faculties,name'
-            ],
-        ]);
-        $faculty =$this->facultyRepo->find($id);
+            'name' => 'required|unique:faculties,name',
+        ],
+            [
+                'name.required' => 'Tên không được để trống',
+                'name.unique' => 'Tên không được trùng',
+            ]
+        );
+        $faculty = $this->facultyRepo->find($id);
         $faculty->update($request->all());
 
-        return redirect()->route('faculty.index', compact('faculty'))->with('success','Successfully!');
+        return redirect()->route('faculty.index', compact('faculty'))->with('success', 'Successfully!');
     }
 
     /**
