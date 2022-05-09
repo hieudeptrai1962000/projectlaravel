@@ -64,6 +64,17 @@
                                     <input type="submit" onclick="return confirm('Are you sure?')"
                                            class="btn btn-danger" value="Delete">
                                 </div>
+                                {!! Form::close()  !!}
+
+                                {{  Form::open(array('route' => array('updatesubject.edit', $s->id), 'method'=>'get')) }}
+
+                                <form>
+                                    {{ csrf_field() }}
+                                    {{ method_field('GET') }}
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-primary" value="Update Subject">
+                                    </div>
+
                             {!! Form::close()  !!}
 
                         </td>
